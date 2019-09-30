@@ -14,9 +14,9 @@ router.post('/send-message', async (req, res) => {
     const message = req.body.message;
 
     sendMail(
-      'Closegamer School <closegamer@mail.ru>',
+      'Ulikeit <closegamer@mail.ru>',
       'closegamer@mail.ru',
-      'Сообщение с контактной формы сайта Closegamer School',
+      'Сообщение с контактной формы сайта Ulikeit',
       `Сообщение с контактной формы от пользователя <b>${user}</b>.<br /><br />Тема: ${header}<br /><br />Сообщение: ${message}`
     );
 
