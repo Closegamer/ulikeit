@@ -12,15 +12,6 @@ export class Admin extends Component {
     if (contentType === 'users') {
       this.setState({ content: 'users' });
     }
-    if (contentType === 'courses') {
-      this.setState({ content: 'courses' });
-    }
-    if (contentType === 'articles') {
-      this.setState({ content: 'articles' });
-    }
-    if (contentType === 'partners') {
-      this.setState({ content: 'partners' });
-    }
   };
 
   render() {
@@ -37,39 +28,9 @@ export class Admin extends Component {
                   <MDBCol lg={3} xs={12}>
                     <MDBBtn
                       className='adminBtn'
-                      onClick={e => this.handleMonitorChange('courses')}
-                    >
-                      Курсы
-                    </MDBBtn>
-                  </MDBCol>
-                </MDBRow>
-                <MDBRow>
-                  <MDBCol lg={3} xs={12}>
-                    <MDBBtn
-                      className='adminBtn'
-                      onClick={e => this.handleMonitorChange('articles')}
-                    >
-                      Статьи
-                    </MDBBtn>
-                  </MDBCol>
-                </MDBRow>
-                <MDBRow>
-                  <MDBCol lg={3} xs={12}>
-                    <MDBBtn
-                      className='adminBtn'
                       onClick={e => this.handleMonitorChange('users')}
                     >
                       Пользователи
-                    </MDBBtn>
-                  </MDBCol>
-                </MDBRow>
-                <MDBRow>
-                  <MDBCol lg={3} xs={12}>
-                    <MDBBtn
-                      className='adminBtn'
-                      onClick={e => this.handleMonitorChange('partners')}
-                    >
-                      Партнеры
                     </MDBBtn>
                   </MDBCol>
                 </MDBRow>

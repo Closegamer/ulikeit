@@ -6,7 +6,6 @@ import { toggleLoginForm, logout } from '../../ducks/auth';
 import { toggleBalanceForm } from '../../ducks/balance';
 import { withRouter } from 'react-router-dom';
 import injectSheet from 'react-jss';
-// import logo from '../../img/logo_big_white.png';
 import WaveComponent from '../../components/WaveComponent';
 import './styles.css';
 
@@ -176,38 +175,6 @@ export class Navigator extends Component {
             )}
           </MDBNavbarNav>
           <MDBNavbarNav right style={specialCaseNavbarStyles}>
-            <MDBNavItem
-              active={this.props.location.pathname.includes('/articles')}
-            >
-              <MDBNavLink to='/articles'>
-                <MDBIcon icon='newspaper' className='d-inline-inline' />{' '}
-                <div className='d-none d-md-inline'>Статьи</div>
-              </MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem
-              active={this.props.location.pathname.includes('/courses')}
-            >
-              <MDBNavLink to='/courses'>
-                <MDBIcon icon='user-graduate' className='d-inline-inline' />{' '}
-                <div className='d-none d-md-inline'>Курсы</div>
-              </MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem
-              active={this.props.location.pathname.includes('/advertising')}
-            >
-              <MDBNavLink to='/advertising'>
-                <MDBIcon icon='dollar-sign' className='d-inline-inline' />{' '}
-                <div className='d-none d-md-inline'>Реклама</div>
-              </MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem
-              active={this.props.location.pathname.includes('/partners')}
-            >
-              <MDBNavLink to='/partners'>
-                <MDBIcon icon='handshake' className='d-inline-inline' />{' '}
-                <div className='d-none d-md-inline'>Партнеры</div>
-              </MDBNavLink>
-            </MDBNavItem>
             <MDBNavItem
               active={this.props.location.pathname.includes('/contacts')}
             >
