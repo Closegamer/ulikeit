@@ -1,0 +1,21 @@
+.adminBtn {
+  min-width: 200px !important;
+  background-color: #00695c !important;
+}
+
+.adminButtons-cont {
+  margin-top: 30px !important;
+}
+
+.adminMonitor-cont {
+  box-shadow: 2px 3px 5px 1px grey;
+  border-radius: 4px;
+  padding: 30px;
+  min-height: 500px;
+}
+
+.monitor-cont {
+  border-top: 1px solid grey;
+  margin-top: 30px;
+  padding-top: 30px;
+}

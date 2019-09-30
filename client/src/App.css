@@ -1,0 +1,206 @@
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/FiraSans/fira-sans-v9-latin_cyrillic-regular.eot'); /* IE9 Compat Modes */
+  src: local('Fira Sans Regular'), local('FiraSans-Regular'),
+    url('./fonts/FiraSans/fira-sans-v9-latin_cyrillic-regular.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */
+      url('./fonts/FiraSans/fira-sans-v9-latin_cyrillic-regular.woff2')
+      format('woff2'),
+    /* Super Modern Browsers */
+      url('./fonts/FiraSans/fira-sans-v9-latin_cyrillic-regular.woff')
+      format('woff'),
+    /* Modern Browsers */
+      url('./fonts/FiraSans/fira-sans-v9-latin_cyrillic-regular.ttf')
+      format('truetype'),
+    /* Safari, Android, iOS */
+      url('./fonts/FiraSans/fira-sans-v9-latin_cyrillic-regular.svg#FiraSans')
+      format('svg'); /* Legacy iOS */
+}
+
+body {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, Roboto, 'Segoe UI',
+    'Helvetica Neue', Arial, sans-serif;
+  font-weight: normal;
+  background-color: white;
+  /* background-image: url('./img/bg_grey.jpg'); */
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+h1,
+h2 {
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: normal;
+}
+
+.logo-label {
+  font-size: 5px;
+}
+
+.main-container {
+  margin-top: 10px;
+  width: 98%;
+}
+
+.bordered {
+  border: 1px solid green;
+  margin-bottom: 0;
+  margin-top: auto;
+  padding: 0;
+}
+
+@media (max-width: 375px) {
+  .main-container {
+    margin-top: 160px;
+  }
+}
+
+.banner240x400 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 240px;
+  height: 400px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid red;
+}
+
+.banner728x90custom {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 728px;
+  height: 90px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid red;
+}
+
+.bannerRight-container {
+  padding: 5px;
+}
+
+.contentArea-container {
+  padding: 30px;
+  box-shadow: 3px 7px 10px 1px grey;
+  border-radius: 4px;
+}
+
+.bannerTop-container {
+  padding: 5px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.bannerBottom-container {
+  padding: 5px;
+  height: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-container {
+  height: 46px;
+  background-color: #00695c;
+  color: white;
+}
+
+.footer-copyright {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.calcBody {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid red;
+}
+
+.calculator-content-container {
+  margin-top: 30px;
+}
+
+.md-pills .nav-link.active {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  color: #fff;
+  background-color: #243a51;
+}
+
+.calculator-stake-container {
+  width: 100%;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  padding: 30px;
+}
+
+.controlButs-containers {
+  margin-bottom: 0;
+  margin-top: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.controlButs {
+  margin: 0;
+  margin-bottom: 1px;
+}
+
+.centeredInput {
+  text-align: center;
+}
+
+.headerRow {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.valid-error {
+  background-color: red;
+}
+
+.m50 {
+  margin-top: 50px;
+}
+
+.widgetRightCard {
+  padding: 30px;
+  box-shadow: 3px 7px 10px 1px grey;
+  border-radius: 4px;
+}
+
+.adminka-main-container {
+  margin-bottom: 15px;
+}
+
+/* .login-form {
+  background-color: white;
+} */
+
+.md-form label {
+  color: white;
+}
+
+.md-form label.active {
+  transform: translateY(-14px) scale(0.8);
+  color: white !important;
+}
+
+.login-form > .btn-outline-success {
+  border: 2px solid white !important;
+  color: white !important;
+}
+
+.form-control {
+  color: white;
+}
