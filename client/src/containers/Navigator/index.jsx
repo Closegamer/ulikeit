@@ -155,7 +155,7 @@ export class Navigator extends Component {
             {isLoggedIn && (
               <React.Fragment>
                 <MDBNavItem>
-                  <MDBNavLink to='#!'>
+                  <MDBNavLink to='/profile'>
                     <div className='d-md-inline'>Вы вошли как {user.nick}</div>
                   </MDBNavLink>
                 </MDBNavItem>

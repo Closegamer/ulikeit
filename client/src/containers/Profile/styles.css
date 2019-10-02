@@ -1,0 +1,17 @@
+.recoveryForm {
+  margin-top: 50px;
+}
+
+.md-form label {
+  color: grey;
+}
+
+.form-control {
+  color: black;
+}
+
+.md-form textarea.md-textarea {
+  padding: 1.5rem 0;
+  resize: both;
+  min-height: 300px;
+}
