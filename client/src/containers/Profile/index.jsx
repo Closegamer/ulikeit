@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
-import { MDBRow, MDBContainer, MDBCol } from 'mdbreact';
+import { MDBRow, MDBContainer, MDBCol, MDBBtn, MDBIcon } from 'mdbreact';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as userActions from '../../ducks/users';
 import ProfileView from './ProfileView';
+import makeAnimated from 'react-select/animated';
+import Select from 'react-select';
+import {
+  optionsCity,
+  optionsCountry,
+  optionsReason,
+  optionsSex,
+  optionsTarget
+} from './selectOptions';
 
 export class Profile extends Component {
   handleSubmit = values => {
-    console.log('handleSubmit');
+    console.log(values);
   };
+
+  toggleRtl = () => this.setState(state => ({ isRtl: !state.isRtl }));
 
   render() {
     const { isLoggedIn, user, userLoadingInProgress } = this.props;
@@ -27,18 +38,175 @@ export class Profile extends Component {
       initialValues = {};
     }
 
+    const animatedComponents = makeAnimated();
     return (
       <MDBContainer className='main-container' fluid>
         <MDBRow>
           <MDBCol xl='9' xs='12' className='contentArea-container'>
-            <h3>Профиль пользователя</h3>
             <MDBRow>
-              <MDBCol size={4}>
-                <ProfileView
-                  handleSubmit={this.handleSubmit}
-                  initialValues={initialValues}
-                />
+              <MDBCol size={6}>
+                <h3>Профиль пользователя</h3>
+                <p className='currentProfileData'>
+                  Чтобы увеличить Ваши шансы на знакомство, рекомендуем Вам
+                  сообщить как можно больше информации.
+                </p>
+                {/* <ProfileView handleSubmit={this.handleSubmit} user={user} /> */}
+                <p className='selectLabel'>Никнейм</p>
+                {user && user.nick && (
+                  <input
+                    className='profileInput'
+                    type='text'
+                    name='nick'
+                    value={user.nick}
+                  />
+                )}
+                {user && !user.nick && (
+                  <input className='profileInput' type='text' name='nick' />
+                )}
+                {user && user.nick && (
+                  <MDBIcon icon='check' className='currentProfileDataCheck' />
+                )}
+                <p className='selectLabel'>Email</p>
+                {user && user.email && (
+                  <input
+                    className='profileInput'
+                    type='text'
+                    name='email'
+                    value={user.email}
+                  />
+                )}
+                {user && !user.email && (
+                  <input
+                    className='profileInput'
+                    type='text'
+                    name='email'
+                    placeholder='не обязательно'
+                  />
+                )}
+                {user && user.email && (
+                  <MDBIcon icon='check' className='currentProfileDataCheck' />
+                )}
+                <p className='selectLabel'>Имя</p>
+                {user && user.firstName && (
+                  <input
+                    className='profileInput'
+                    type='text'
+                    name='firstName'
+                    value={user.firstName}
+                  />
+                )}
+                {user && !user.firstName && (
+                  <input
+                    className='profileInput'
+                    type='text'
+                    name='firstName'
+                    placeholder='не обязательно'
+                  />
+                )}
+                {user && user.firstName && (
+                  <MDBIcon icon='check' className='currentProfileDataCheck' />
+                )}
+                <p className='selectLabel'>Фамилия</p>
+                {user && user.lastName && (
+                  <input
+                    className='profileInput'
+                    type='text'
+                    name='lastName'
+                    value={user.lastName}
+                  />
+                )}
+                {user && !user.lastName && (
+                  <input
+                    className='profileInput'
+                    type='text'
+                    name='lastName'
+                    placeholder='не обязательно'
+                  />
+                )}
+                {user && user.lastName && (
+                  <MDBIcon icon='check' className='currentProfileDataCheck' />
+                )}
+                <p className='selectLabel'>Ваш пол</p>
+                <div className='selectContainer'>
+                  <Select
+                    options={optionsSex}
+                    defaultValue={user.sex}
+                    placeholder={user.sex}
+                    name='sex'
+                  />
+                </div>
+                {user && user.sex && (
+                  <MDBIcon icon='check' className='currentProfileDataCheck' />
+                )}
+                <p className='selectLabel'>Причина пребывания здесь</p>
+                <div className='selectContainer'>
+                  <Select
+                    options={optionsReason}
+                    defaultValue={user.reason}
+                    components={animatedComponents}
+                    isMulti
+                    name='reason'
+                  />
+                </div>
+                {user && user.reason && (
+                  <MDBIcon icon='check' className='currentProfileDataCheck' />
+                )}
+                <p className='selectLabel'>Объект поиска</p>
+                <div className='selectContainer'>
+                  <Select
+                    options={optionsTarget}
+                    defaultValue={user.target}
+                    isMulti
+                    name='target'
+                  />
+                </div>
+                {user && user.target && (
+                  <MDBIcon icon='check' className='currentProfileDataCheck' />
+                )}
+                <p className='selectLabel'>Страна</p>
+                <div className='selectContainer'>
+                  <Select
+                    options={optionsCountry}
+                    defaultValue={user.country}
+                    placeholder={user.country}
+                    name='country'
+                  />
+                </div>
+                {user && user.country && (
+                  <MDBIcon icon='check' className='currentProfileDataCheck' />
+                )}
+                <p className='selectLabel'>Город</p>
+                <div className='selectContainer'>
+                  <Select
+                    options={optionsCity}
+                    defaultValue={user.city}
+                    placeholder={user.city}
+                    name='city'
+                  />
+                </div>
+                {user && user.city && (
+                  <MDBIcon icon='check' className='currentProfileDataCheck' />
+                )}
+                <p className='selectLabel'>Несколько слов о себе</p>
+                <div>
+                  <textarea
+                    className='textareaProfile'
+                    value={user.desc}
+                    name='desc'
+                    rows='7'
+                    maxlength='500'
+                    placeholder='не обязательно'
+                  />
+                </div>
+                {user && user.desc && (
+                  <MDBIcon icon='check' className='currentProfileDataCheck' />
+                )}
+                <br />
+                <MDBBtn onClick={this.handleSubmit} className='adminBtn'>
+                  Сохранить
+                </MDBBtn>
               </MDBCol>
+              <MDBCol size={6}>{user.pic && <img src='' />}</MDBCol>
             </MDBRow>
           </MDBCol>
           <MDBCol xl='3' xs='12' className='bannerRight-container'>
