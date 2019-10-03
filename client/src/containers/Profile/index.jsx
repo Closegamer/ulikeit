@@ -3,7 +3,6 @@ import { MDBRow, MDBContainer, MDBCol, MDBBtn, MDBIcon } from 'mdbreact';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as userActions from '../../ducks/users';
-import ProfileView from './ProfileView';
 import makeAnimated from 'react-select/animated';
 import Select from 'react-select';
 import {
@@ -13,6 +12,7 @@ import {
   optionsSex,
   optionsTarget
 } from './selectOptions';
+import './styles.css';
 
 export class Profile extends Component {
   handleSubmit = values => {
@@ -23,18 +23,6 @@ export class Profile extends Component {
     const { isLoggedIn, user, userLoadingInProgress } = this.props;
 
     if (userLoadingInProgress) return <div>спинер</div>;
-
-    let initialValues = null;
-
-    if (isLoggedIn) {
-      initialValues = {
-        user: user.nick,
-        email: user.email,
-        country: 'Россия'
-      };
-    } else {
-      initialValues = {};
-    }
 
     const animatedComponents = makeAnimated();
     return (
@@ -212,12 +200,8 @@ export class Profile extends Component {
                 {user && user.desc && (
                   <MDBIcon icon='check' className='currentProfileDataCheck' />
                 )}
-                <br />
-                <MDBBtn onClick={this.handleSubmit} className='adminBtn'>
-                  Сохранить
-                </MDBBtn>
               </MDBCol>
-              <MDBCol size={6}>{user.pic && <img src='' />}</MDBCol>
+              <MDBCol size={6}>фото</MDBCol>
             </MDBRow>
           </MDBCol>
           <MDBCol xl='3' xs='12' className='bannerRight-container'>
@@ -232,6 +216,11 @@ export class Profile extends Component {
                 <div className='banner240x400'></div>
               </MDBCol>
             </MDBRow>
+          </MDBCol>
+        </MDBRow>
+        <MDBRow>
+          <MDBCol xl='9' xs='12' className='bannerBottom-container'>
+            <div className='banner728x90custom'></div>
           </MDBCol>
         </MDBRow>
       </MDBContainer>
