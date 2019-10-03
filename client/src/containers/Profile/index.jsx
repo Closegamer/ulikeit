@@ -19,8 +19,6 @@ export class Profile extends Component {
     console.log(values);
   };
 
-  toggleRtl = () => this.setState(state => ({ isRtl: !state.isRtl }));
-
   render() {
     const { isLoggedIn, user, userLoadingInProgress } = this.props;
 
@@ -58,10 +56,16 @@ export class Profile extends Component {
                     type='text'
                     name='nick'
                     value={user.nick}
+                    onChange={this.handleSubmit}
                   />
                 )}
                 {user && !user.nick && (
-                  <input className='profileInput' type='text' name='nick' />
+                  <input
+                    className='profileInput'
+                    type='text'
+                    name='nick'
+                    onChange={this.handleSubmit}
+                  />
                 )}
                 {user && user.nick && (
                   <MDBIcon icon='check' className='currentProfileDataCheck' />
@@ -73,6 +77,7 @@ export class Profile extends Component {
                     type='text'
                     name='email'
                     value={user.email}
+                    onChange={this.handleSubmit}
                   />
                 )}
                 {user && !user.email && (
@@ -81,6 +86,7 @@ export class Profile extends Component {
                     type='text'
                     name='email'
                     placeholder='не обязательно'
+                    onChange={this.handleSubmit}
                   />
                 )}
                 {user && user.email && (
@@ -93,6 +99,7 @@ export class Profile extends Component {
                     type='text'
                     name='firstName'
                     value={user.firstName}
+                    onChange={this.handleSubmit}
                   />
                 )}
                 {user && !user.firstName && (
@@ -101,6 +108,7 @@ export class Profile extends Component {
                     type='text'
                     name='firstName'
                     placeholder='не обязательно'
+                    onChange={this.handleSubmit}
                   />
                 )}
                 {user && user.firstName && (
@@ -113,6 +121,7 @@ export class Profile extends Component {
                     type='text'
                     name='lastName'
                     value={user.lastName}
+                    onChange={this.handleSubmit}
                   />
                 )}
                 {user && !user.lastName && (
@@ -121,6 +130,7 @@ export class Profile extends Component {
                     type='text'
                     name='lastName'
                     placeholder='не обязательно'
+                    onChange={this.handleSubmit}
                   />
                 )}
                 {user && user.lastName && (
@@ -196,6 +206,7 @@ export class Profile extends Component {
                     rows='7'
                     maxlength='500'
                     placeholder='не обязательно'
+                    onChange={this.handleSubmit}
                   />
                 </div>
                 {user && user.desc && (
