@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { MDBRow, MDBContainer, MDBCol, MDBBtn, MDBIcon } from 'mdbreact';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import * as appActions from '../../ducks/app';
 import * as userActions from '../../ducks/users';
 import makeAnimated from 'react-select/animated';
 import Select from 'react-select';
@@ -15,12 +16,36 @@ import {
 import './styles.css';
 
 export class Profile extends Component {
+  fileInput = React.createRef();
+
   handleSubmit = values => {
     console.log(values);
   };
 
+  onFileInputClick = () => {
+    const input = this.fileInput.current;
+    if (input) {
+      input.click();
+    }
+  };
+
+  onFileSelect = e => {
+    const fileList = e.target.files;
+    console.log(fileList);
+    this.props.appActions.loadImage(fileList[0]);
+    if (!!this.fileInput.current) {
+      this.fileInput.current.value = '';
+    }
+  };
+
   render() {
-    const { isLoggedIn, user, userLoadingInProgress } = this.props;
+    const {
+      isLoggedIn,
+      user,
+      userLoadingInProgress,
+      imageLoadingError,
+      imageLoadingInProgress
+    } = this.props;
 
     if (userLoadingInProgress) return <div>спинер</div>;
 
@@ -192,7 +217,7 @@ export class Profile extends Component {
                     value={user.desc}
                     name='desc'
                     rows='7'
-                    maxlength='500'
+                    maxLength='500'
                     placeholder='не обязательно'
                     onChange={this.handleSubmit}
                   />
@@ -201,7 +226,24 @@ export class Profile extends Component {
                   <MDBIcon icon='check' className='currentProfileDataCheck' />
                 )}
               </MDBCol>
-              <MDBCol size={6}>фото</MDBCol>
+              <MDBCol size={6}>
+                <input
+                  accept='image/*'
+                  ref={this.fileInput}
+                  type='file'
+                  hidden
+                  onChange={this.onFileSelect}
+                />
+                {!!imageLoadingError && <div>{imageLoadingError}</div>}
+                <MDBBtn
+                  className='adminBtn'
+                  type='button'
+                  onClick={this.onFileInputClick}
+                  disabled={imageLoadingInProgress}
+                >
+                  Отправить
+                </MDBBtn>
+              </MDBCol>
             </MDBRow>
           </MDBCol>
           <MDBCol xl='3' xs='12' className='bannerRight-container'>
@@ -228,14 +270,17 @@ export class Profile extends Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => ({
+const mapStateToProps = ({ auth, app }) => ({
   isLoggedIn: auth.isLoggedIn,
   user: auth.user,
-  userLoadingInProgress: auth.userLoadingInProgress
+  userLoadingInProgress: auth.userLoadingInProgress,
+  imageLoadingInProgress: app.imageLoadingInProgress,
+  imageLoadingError: app.imageLoadingError
 });
 
 const mapDispatchToProps = dispatch => ({
-  userActions: bindActionCreators({ ...userActions }, dispatch)
+  userActions: bindActionCreators({ ...userActions }, dispatch),
+  appActions: bindActionCreators({ ...appActions }, dispatch)
 });
 
 export default connect(
